@@ -1,4 +1,4 @@
-package io.ctdev;
+package io.ctdev.tests;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
