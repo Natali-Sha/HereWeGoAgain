@@ -17,7 +17,7 @@ import java.util.Random;
 
 import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
 
-public class HW_Lesson_2 extends BaseTest {
+public class Random_Lesson_2 extends BaseTest {
     /**
      * Unit test for simple App.
      */
