@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class DataProvider2 {
+public class DataProvider_Lesson_2 {
 
 
     public String data_1() {
