@@ -4,6 +4,8 @@ import io.ctdev.tests.framework.driver.WebDriverSingleton;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -27,7 +29,10 @@ public class ValidationRegisterPage_Lesson_4 {
 
     @BeforeClass
     public void beforeTests() {
-        getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        //getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
+        WebDriverWait wait = new WebDriverWait(getDriver(),5);
+
         getDriver().get("http://3.18.213.48/#/");
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
 
@@ -121,7 +126,7 @@ public class ValidationRegisterPage_Lesson_4 {
     @Test
     public void showPasswordAdvice_Toggle() throws InterruptedException {
 
-        //  getDriver().findElement(By.xpath(".//*[@class='mat-slide-toggle mat-warn']")).click();
+
         getDriver().findElement(By.xpath(".//*[@class='mat-slide-toggle-thumb']")).click();
 
         Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, \"ng-tns-c136-\")]")).size() > 0, "Password Advice not shown!");

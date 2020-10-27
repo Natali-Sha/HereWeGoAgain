@@ -16,11 +16,11 @@ public class ProfilePage_Lesson_3 {
     private String departmentCSS = "[name='department']";
     private String departmentXpath = "//input[@name='department']";
 
-    private String cancelCSS = "button[type='button'].button_btn__2GBfK";
-    private String cancelXpath = ".//*[@class='button_btn__2GBfK editUserProfile_cancelBtn__fnKLZ']";
+    private String cancelCSS = "[class*='editUserProfile_buttonsBox'] :nth-of-type(1)";
+    private String cancelXpath = "(.//*[contains(@class, 'button_btn')])[1]";
 
-    private String saveCSS = "button[type='submit'].button_btn__2GBfK";
-    private String saveXpath = ".//*[@class='button_btn__2GBfK']";
+    private String saveCSS = "[class*='editUserProfile_buttonsBox'] :nth-of-type(2)";
+    private String saveXpath = "(.//*[contains(@class, 'button_btn')])[2]";
 }
 
 
