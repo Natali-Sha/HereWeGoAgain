@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.Select;
@@ -19,8 +20,8 @@ public class SingUpJuiceShop_Lesson_4 {
     private String pass = "09876543217";
     private String answer = "00.00.0000";
 
-    @BeforeTest
-    public void BeforeSingUp() {
+    @BeforeClass
+    public void beforeSingUp() {
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         getDriver().get("http://3.18.213.48/#/");
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
@@ -107,33 +108,15 @@ public class SingUpJuiceShop_Lesson_4 {
 
         Thread.sleep(4000);
 
-        System.out.println("Clicking on Register button" );
+        System.out.println("Clicking on Register button");
         getDriver().findElement(By.id("registerButton")).click();
 
-        Thread.sleep(15000);
+        Thread.sleep(7000);
 
         String getCurrentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(getCurrentUrl, "http://3.18.213.48/#/login", "Registration error" );
+        Assert.assertEquals(getCurrentUrl, "http://3.18.213.48/#/login", "Registration error");
 
     }
 }
 
-//        newCustomerLink
 
-//        System.out.println("Typing user email - " + userName);
-//        getDriver().findElement(By.id("email")).sendKeys(userName);
-//
-//        System.out.println("Typing user password - 12345678");
-//        getDriver().findElement(By.id("password")).sendKeys("12345678");
-//
-//        System.out.println("Clicking on Login button");
-//        getDriver().findElement(By.id("loginButton")).click();
-//
-//        getDriver().findElement(By.id("navbarAccount")).click();
-//
-//        Thread.sleep(5000);
-//
-//        String actualUserName = getDriver().findElement(By.cssSelector("[aria-label='Go to user profile'] span")).getAttribute("innerText").trim();
-//
-////        Assert.assertEquals(actualUserName,userName, "User name does not mach");
-//}
