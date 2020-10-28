@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
@@ -20,31 +21,30 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
 
 public class SingUpJuiceShop_Lesson_4 {
 
-    private String userName = "natali13@ukr.net";
+    Random rand = new Random(System.currentTimeMillis());
+    int uniqueLoginName = rand.nextInt(999999);
+
+    private String userName = "nat" + uniqueLoginName + "@ukr.net";
     private String pass = "09876543217";
     private String answer = "00.00.0000";
 
     @BeforeClass
     public void beforeSingUp() {
+
         //getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 //       WebDriverWait webDriverWait = new WebDriverWait(getDriver(), 5, 1000);
-        WebDriverWait wait = new WebDriverWait(getDriver(),5)
-                ;
+        WebDriverWait wait = new WebDriverWait(getDriver(), 5);
         getDriver().get("http://3.18.213.48/#/");
-
-
-
+        getDriver().navigate().refresh();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class*='close-dialog']")));
-
-
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
-
     }
 
     @AfterClass
     public void tearDown() {
+        System.out.println(userName);
 
-        WebDriverWait wait = new WebDriverWait(getDriver(),5);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 5);
 
         System.out.println("After Class: Login after sing-up");
 
@@ -91,11 +91,8 @@ public class SingUpJuiceShop_Lesson_4 {
     @Test
     public void userIsAbleToLoginToShop() throws InterruptedException {
 
+        WebDriverWait wait = new WebDriverWait(getDriver(), 7);
 
-
-        WebDriverWait wait = new WebDriverWait(getDriver(),7);
-//alertIsPresent();
-//        JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
         System.out.println("Clicking on Account button");
         WebElement element = getDriver().findElement(By.id("navbarAccount"));
@@ -131,37 +128,30 @@ public class SingUpJuiceShop_Lesson_4 {
         System.out.println("Typing answer - " + answer);
         getDriver().findElement(By.id("securityAnswerControl")).sendKeys(answer);
 
-      //  force page reload
 
         System.out.println("Clicking on Register button");
 
 
         WebElement registerButton = getDriver().findElement(By.id("registerButton"));
-       // getDriver().findElement(By.id("registerButton")).click();
+
 
         registerButton.click();
 
-
-
-
-        //This will scroll the web page till end.
-//        js.executeScript("window.scrollBy(0,100)");
-//        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-  //      wait.until(ExpectedConditions.stalenessOf());
-
-//        WebElement registerButton = getDriver().findElement(By.id("registerButton"));
-//        wait.until(ExpectedConditions.elementToBeClickable(registerButton));
-//        Actions actions = new Actions(getDriver());
-//        actions.moveToElement(getDriver().findElement(By.xpath(".//*[@href='#/login']")));
-//        registerButton.click();
-
-
-//        wait.until(ExpectedConditions.urlToBe("http://3.18.213.48/#/login"));
+        wait.until(ExpectedConditions.urlToBe("http://3.18.213.48/#/login"));
 
         String getCurrentUrl = getDriver().getCurrentUrl();
         Assert.assertEquals(getCurrentUrl, "http://3.18.213.48/#/login", "Registration error");
 
     }
 }
+//This will scroll the web page till end.
+//        js.executeScript("window.scrollBy(0,100)");
+//        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//      wait.until(ExpectedConditions.stalenessOf());
 
+//        WebElement registerButton = getDriver().findElement(By.id("registerButton"));
+//        wait.until(ExpectedConditions.elementToBeClickable(registerButton));
+//        Actions actions = new Actions(getDriver());
+//        actions.moveToElement(getDriver().findElement(By.xpath(".//*[@href='#/login']")));
+//        registerButton.click()
 

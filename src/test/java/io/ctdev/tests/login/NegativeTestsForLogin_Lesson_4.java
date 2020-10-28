@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -45,8 +46,15 @@ public class NegativeTestsForLogin_Lesson_4 {
         WebDriverSingleton.closeDriver();
     }
 
+    @AfterMethod
+    public void clearData() {
+        getDriver().findElement(By.id("email")).clear();
+        getDriver().findElement(By.id("password")).clear();
+    }
+
     @Test
-    public void NotPossibleToLoginWithoutEmail() throws InterruptedException {
+    public void
+    notPossibleToLoginWithoutEmail() throws InterruptedException {
 
         System.out.println("Typing user password");
         getDriver().findElement(By.id("password")).sendKeys(pass);
@@ -55,12 +63,13 @@ public class NegativeTestsForLogin_Lesson_4 {
         WebElement logButton = getDriver().findElement(By.id("loginButton"));
         String visible = logButton.getAttribute("disabled");
 
-         getDriver().navigate().refresh();
+        Assert.assertEquals(visible, "true", "Login button is enabled w/o user email.");
 
+        getDriver().navigate().refresh();
     }
 
     @Test
-    public void NotPossibleToLoginWithoutPass() throws InterruptedException {
+    public void notPossibleToLoginWithoutPass() throws InterruptedException {
 
         System.out.println("Typing user email - " + userName);
         getDriver().findElement(By.id("email")).sendKeys(userName);
@@ -69,14 +78,14 @@ public class NegativeTestsForLogin_Lesson_4 {
         WebElement logButton = getDriver().findElement(By.id("loginButton"));
         String visible = logButton.getAttribute("disabled");
 
-
         Assert.assertEquals(visible, "true", "Login button is enabled w/o user password.");
 
         getDriver().navigate().refresh();
     }
 
     @Test
-    public void NotPossibleToLoginWithInvalidPass() throws InterruptedException {
+    public void
+    notPossibleToLoginWithInvalidPass() throws InterruptedException {
 
         System.out.println("Typing user email - " + userName);
         getDriver().findElement(By.id("email")).sendKeys(userName);
@@ -91,13 +100,10 @@ public class NegativeTestsForLogin_Lesson_4 {
 
         Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")).size() > 0, "Warning massage 'Invalid email or password.' is not shown");
 
-        getDriver().findElement(By.id("email")).clear();
-        getDriver().findElement(By.id("password")).clear();
     }
 
-
     @Test
-    public void NotPossibleToLoginWithInvalidEmail() throws InterruptedException {
+    public void notPossibleToLoginWithInvalidEmail() throws InterruptedException {
 
         System.out.println("Typing user email - " + invalidUserName);
         getDriver().findElement(By.id("email")).sendKeys(invalidUserName);
@@ -112,8 +118,6 @@ public class NegativeTestsForLogin_Lesson_4 {
 
         Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")).size() > 0, "Warning massage 'Invalid email or password.' is not shown");
 
-        getDriver().findElement(By.id("email")).clear();
-        getDriver().findElement(By.id("password")).clear();
     }
 
 }

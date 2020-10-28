@@ -23,7 +23,7 @@ public class TestLogin_Lesson_4 {
     WebDriverWait wait;
 
     @BeforeClass
-    public void SetUp() {
+    public void setUp() {
 
         getDriver().get("http://3.18.213.48/#/");
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();

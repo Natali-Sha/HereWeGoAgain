@@ -47,7 +47,6 @@ public class MyFirstTest extends BaseTest {
 //        driver.quit();
     }
 
-
     @Test
     public void searchWebElement() throws InterruptedException {
         driver.get("https://www.google.com.ua");
