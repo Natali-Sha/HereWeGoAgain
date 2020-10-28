@@ -4,11 +4,10 @@ import io.ctdev.tests.framework.driver.WebDriverSingleton;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,10 +23,12 @@ public class ValidationRegisterPage_Lesson_4 {
     private String emailString = "nataliukr.net";
 
 
-
     @BeforeClass
     public void beforeTests() {
-        getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        //getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), 5);
+
         getDriver().get("http://3.18.213.48/#/");
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
 
@@ -47,6 +48,13 @@ public class ValidationRegisterPage_Lesson_4 {
         WebDriverSingleton.closeDriver();
     }
 
+    @AfterMethod
+    public void clearData() {
+        getDriver().findElement(By.id("passwordControl")).clear();
+        getDriver().findElement(By.id("emailControl")).clear();
+        getDriver().findElement(By.id("repeatPasswordControl")).clear();
+        getDriver().findElement(By.id("securityAnswerControl")).clear();
+    }
 
     @Test
     public void numberOfCharactersInField_Password_4char() throws InterruptedException {
@@ -57,9 +65,6 @@ public class ValidationRegisterPage_Lesson_4 {
         String isInvalid = passError.getAttribute("aria-invalid");
 
         Assert.assertEquals(isInvalid, "true", "Warning 'Password must be 5-20 characters long' is shown");
-
-        getDriver().findElement(By.id("passwordControl")).clear();
-
     }
 
     @Test
@@ -71,9 +76,6 @@ public class ValidationRegisterPage_Lesson_4 {
         String isInvalid = passError.getAttribute("aria-invalid");
 
         Assert.assertEquals(isInvalid, "true", "Warning 'Password must be 5-20 characters long' is shown");
-
-        getDriver().findElement(By.id("passwordControl")).clear();
-
     }
 
     @Test
@@ -85,8 +87,6 @@ public class ValidationRegisterPage_Lesson_4 {
         String isInvalid = mailInt.getAttribute("aria-invalid");
 
         Assert.assertEquals(isInvalid, "true", "Warning 'Email address is not valid' is shown");
-
-        getDriver().findElement(By.id("emailControl")).clear();
     }
 
     @Test
@@ -98,8 +98,6 @@ public class ValidationRegisterPage_Lesson_4 {
         String isInvalid = mailString.getAttribute("aria-invalid");
 
         Assert.assertEquals(isInvalid, "true", "Warning 'Email address is not valid' is shown");
-
-        getDriver().findElement(By.id("emailControl")).clear();
     }
 
     @Test
@@ -113,15 +111,11 @@ public class ValidationRegisterPage_Lesson_4 {
         String isInvalid = repeatPassError.getAttribute("aria-invalid");
 
         Assert.assertEquals(isInvalid, "true", "Warning 'Passwords do not match' is shown");
-
-        getDriver().findElement(By.xpath(".//*[@id='passwordControl']")).clear();
-        repeatPassError.clear();
     }
 
     @Test
     public void showPasswordAdvice_Toggle() throws InterruptedException {
 
-        //  getDriver().findElement(By.xpath(".//*[@class='mat-slide-toggle mat-warn']")).click();
         getDriver().findElement(By.xpath(".//*[@class='mat-slide-toggle-thumb']")).click();
 
         Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, \"ng-tns-c136-\")]")).size() > 0, "Password Advice not shown!");
@@ -143,8 +137,6 @@ public class ValidationRegisterPage_Lesson_4 {
         getDriver().findElement(By.id("passwordControl")).click();
         String ariaInvalid = securityAnswer.getAttribute("aria-invalid");
 
-
         Assert.assertEquals(ariaInvalid, "true", "Please provide an answer to your security question");
-
     }
 }
