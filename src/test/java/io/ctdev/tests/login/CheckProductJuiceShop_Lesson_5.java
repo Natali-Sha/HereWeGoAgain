@@ -106,14 +106,18 @@ public class CheckProductJuiceShop_Lesson_5 {
     @Test
     public void soldOutProduct() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(getDriver(), 5);
-        WebElement nextPage = getDriver().findElement(By.xpath(".//*[@aria-label='Next page']"));
+
+        WebElement nextPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@aria-label='Next page']")));
+
+      //  WebElement nextPage = getDriver().findElement(By.xpath(".//*[@aria-label='Next page']"));
 
 //        Actions actions = new Actions(getDriver());
 //        actions.moveToElement(nextPage);
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", nextPage);
-        Thread.sleep(500);
 
-        wait.until(ExpectedConditions.visibilityOf(nextPage));
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", nextPage);
+
+        //Thread.sleep(500);
+
         nextPage.click();
 
 
