@@ -1,11 +1,9 @@
 package io.ctdev.tests.login;
 
-import io.ctdev.tests.framework.driver.WebDriverSingleton;
+import io.ctdev.framework.driver.WebDriverSingleton;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -16,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
+import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class CheckProductJuiceShop_Lesson_5 {
 
@@ -106,14 +104,18 @@ public class CheckProductJuiceShop_Lesson_5 {
     @Test
     public void soldOutProduct() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(getDriver(), 5);
-        WebElement nextPage = getDriver().findElement(By.xpath(".//*[@aria-label='Next page']"));
+
+        WebElement nextPage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@aria-label='Next page']")));
+
+      //  WebElement nextPage = getDriver().findElement(By.xpath(".//*[@aria-label='Next page']"));
 
 //        Actions actions = new Actions(getDriver());
 //        actions.moveToElement(nextPage);
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", nextPage);
-        Thread.sleep(500);
 
-        wait.until(ExpectedConditions.visibilityOf(nextPage));
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", nextPage);
+
+        //Thread.sleep(500);
+
         nextPage.click();
 
 

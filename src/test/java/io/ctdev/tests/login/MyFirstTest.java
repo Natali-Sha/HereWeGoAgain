@@ -2,22 +2,13 @@ package io.ctdev.tests.login;
 
 
 import io.ctdev.tests.BaseTest;
-import io.ctdev.tests.framework.driver.WebDriverSingleton;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.ctdev.framework.driver.WebDriverSingleton;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import io.ctdev.tests.framework.driver.WebDriverSingleton;
 
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
+import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 import static org.testng.Assert.assertTrue;
-
-import io.ctdev.tests.framework.config.TestConfig;
-
-import java.util.List;
 
 /**
  * Unit test for simple App.
