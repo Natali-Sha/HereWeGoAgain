@@ -1,10 +1,5 @@
-package io.ctdev.tests.framework.model;
+package io.ctdev.framework.model;
 
-import sun.security.provider.certpath.Builder;
-
-import java.util.Locale;
-
-import static com.beust.jcommander.JCommander.newBuilder;
 
 public class Customer {
 
@@ -15,7 +10,7 @@ public class Customer {
         return email;
     }
 
-    public void satEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -23,7 +18,7 @@ public class Customer {
         return password;
     }
 
-    public void satPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -31,36 +26,35 @@ public class Customer {
         return new Builder();
     }
 
-    public Customer(){
+    public Customer() {
     }
 
-    private Customer(final Builder builder){
+    private Customer(final Builder builder) {
         email = builder.email;
         password = builder.password;
-
     }
 
-    public static final class Builder{
+    public static final class Builder {
         private String email;
         private String password;
 
-        private Builder(){
+        private Builder() {
         }
 
-         public Builder withName (final String val){
+        public Builder withName(final String val) {
             email = val;
             return this;
         }
 
-        public Builder withPassword (final String val){
-            email = val;
+        public Builder withPassword(final String val) {
+            password = val;
             return this;
         }
 
-        public Customer build (){
+
+        public Customer build() {
             return new Customer(this);
         }
-
     }
 
 }

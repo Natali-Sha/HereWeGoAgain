@@ -1,6 +1,6 @@
-package io.ctdev.tests.framework.pages.login;
+package io.ctdev.framework.pages.login;
 
-import io.ctdev.tests.framework.pages.AbstractPage;
+import io.ctdev.framework.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
 
 public class LoginPageFactory extends AbstractPage {
 

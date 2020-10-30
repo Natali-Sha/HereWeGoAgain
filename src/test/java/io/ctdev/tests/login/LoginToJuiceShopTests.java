@@ -1,14 +1,13 @@
 package io.ctdev.tests.login;
 
-import io.ctdev.tests.framework.driver.WebDriverSingleton;
-import io.ctdev.tests.framework.model.Customer;
-import io.ctdev.tests.framework.pages.login.LoginFluentPage;
-import io.ctdev.tests.framework.pages.login.LoginPage;
-import io.ctdev.tests.framework.pages.login.LoginPageFactory;
+import io.ctdev.framework.driver.WebDriverSingleton;
+import io.ctdev.framework.model.Customer;
+import io.ctdev.framework.pages.login.LoginFluentPage;
+import io.ctdev.framework.pages.login.LoginPage;
+import io.ctdev.framework.pages.login.LoginPageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -16,9 +15,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
+import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class LoginToJuiceShopTests {
 
@@ -43,7 +40,7 @@ public class LoginToJuiceShopTests {
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
         wait = new WebDriverWait(driver, 5);
         customer1 = Customer.newBuilder().withName("natali6@ukr.net").withPassword("09876543216").build();
-        customer1 = Customer.newBuilder().withName("adadadad").build();
+        customer2 = Customer.newBuilder().withName("adadadad").build();
         loginPage = new LoginPage(driver);
         fluentPage = new LoginFluentPage(driver);
         loginPageFactory = new LoginPageFactory(driver);
@@ -121,7 +118,7 @@ public class LoginToJuiceShopTests {
                 submitLoginForUser().getCurrentLoggedUserName();
 
 //        loginPage.clickOnLoginButton();
-//        logiPage.enterUserEmail(customer1.getEmail());
+//        loginPage.enterUserEmail(customer1.getEmail());
 //        loginPage.enterUserPassword(customer1.getPassword());
 //        loginPage.submitLoginForUser();
 //        String actualUserName = loginPage.getCurrentLoggedUserName();

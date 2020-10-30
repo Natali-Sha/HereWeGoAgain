@@ -1,13 +1,13 @@
-package io.ctdev.tests.framework.pages.login;
+package io.ctdev.framework.pages.login;
 
-import io.ctdev.tests.framework.pages.AbstractPage;
+import io.ctdev.framework.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
+import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class LoginPage extends AbstractPage {
 

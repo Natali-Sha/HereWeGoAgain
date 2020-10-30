@@ -1,6 +1,6 @@
-package io.ctdev.tests.framework.driver;
+package io.ctdev.framework.driver;
 
-import io.ctdev.tests.framework.config.TestConfig;
+import io.ctdev.framework.config.TestConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

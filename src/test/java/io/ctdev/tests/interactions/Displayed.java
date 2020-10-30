@@ -2,7 +2,7 @@ package io.ctdev.tests.interactions;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
+import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class Displayed {
 

@@ -2,12 +2,8 @@ package io.ctdev.tests.login;
 
 
 import io.ctdev.tests.BaseTest;
-import io.ctdev.tests.framework.driver.WebDriverSingleton;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.config.WebDriverManagerException;
-import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import io.ctdev.framework.driver.WebDriverSingleton;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-import static io.ctdev.tests.framework.driver.WebDriverSingleton.getDriver;
+import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class Random_Lesson_2 extends BaseTest {
     /**
