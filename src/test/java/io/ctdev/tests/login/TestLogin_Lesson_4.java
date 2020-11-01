@@ -1,5 +1,6 @@
 package io.ctdev.tests.login;
 
+import io.ctdev.framework.config.TestConfig;
 import io.ctdev.framework.driver.WebDriverSingleton;
 import io.ctdev.framework.model.Customer;
 import io.ctdev.framework.model.Customer_hw6;
@@ -33,11 +34,13 @@ public class TestLogin_Lesson_4 {
     @BeforeClass
     public void setUp() {
 
-        getDriver().get("http://3.18.213.48/#/");
-        getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
+//        getDriver().get("http://3.18.213.48/#/");
+        getDriver().get(TestConfig.cfg.baseUrl());
         wait = new WebDriverWait(driver, 5);
+        getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
         customerLogin = Customer_hw6.newBuilder().withName("natali6@ukr.net").withPassword("09876543216").build();
         fluentPage_hw6 = new LoginFluent_Lesson_6(driver);
+
     }
 
     @AfterClass
@@ -49,10 +52,10 @@ public class TestLogin_Lesson_4 {
     public void userIsAbleToLogin() throws InterruptedException {
 
         String loggedInUser = fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().enterUserEmail_hw6(customerLogin.getEmail()).
-               enterUserPassword_hw6(customerLogin.getPassword()).
+                enterUserPassword_hw6(customerLogin.getPassword()).
                 submitLoginForUser_hw6().getCurrentLoggedUserName_hw6();
 
-        Assert.assertEquals(loggedInUser,  customerLogin.getEmail(), "User name does not mach");
+        Assert.assertEquals(loggedInUser, customerLogin.getEmail(), "User name does not mach");
 
 //        System.out.println("Clicking on Account button");
 //        WebElement element = getDriver().findElement(By.id("navbarAccount"));

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Failed suite [Surefire suite]" verbose="0">
+  <test thread-count="1" name="Surefire test(failed)" verbose="0">
+    <classes>
+      <class name="io.ctdev.tests.login.LoginToJuiceShopTests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="userIsAbleToLoginToShopWithPageFactory"/>
+          <include name="SetUp"/>
+          <include name="userIsAbleToLoginToShopWithFluentInterface"/>
+        </methods>
+      </class> <!-- io.ctdev.tests.login.LoginToJuiceShopTests -->
+      <class name="io.ctdev.tests.login.TestLogin_Lesson_4">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="userIsAbleToLogin"/>
+        </methods>
+      </class> <!-- io.ctdev.tests.login.TestLogin_Lesson_4 -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->

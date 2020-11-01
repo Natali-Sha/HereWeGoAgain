@@ -1,5 +1,6 @@
 package io.ctdev.tests.login;
 
+import io.ctdev.framework.config.TestConfig;
 import io.ctdev.framework.driver.WebDriverSingleton;
 import io.ctdev.framework.model.Customer;
 import io.ctdev.framework.pages.login.LoginFluentPage;
@@ -36,7 +37,9 @@ public class LoginToJuiceShopTests {
     @BeforeClass
     public void SetUp() {
 //        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        getDriver().get("http://3.18.213.48/#/");
+//
+//   getDriver().get("http://3.18.213.48/#/");
+        getDriver().get(TestConfig.cfg.baseUrl());
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
         wait = new WebDriverWait(driver, 5);
         customer1 = Customer.newBuilder().withName("natali6@ukr.net").withPassword("09876543216").build();
