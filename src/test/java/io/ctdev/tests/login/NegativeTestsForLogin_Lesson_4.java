@@ -2,10 +2,9 @@ package io.ctdev.tests.login;
 
 import io.ctdev.framework.model.Customer_hw6;
 import io.ctdev.framework.driver.WebDriverSingleton;
-import io.ctdev.framework.pages.login_HW.LoginFluent_Lesson_6;
+import io.ctdev.framework.pages.login_HW6.LoginFluent_Lesson_6;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -62,7 +61,7 @@ public class NegativeTestsForLogin_Lesson_4 {
     }
 
     @Test
-    public void notPossibleToLoginWithoutEmail() throws InterruptedException {
+    public void notPossibleToLoginWithoutEmail(){
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserPassword_hw6(customerLogin.getEmail());
 
@@ -83,7 +82,7 @@ public class NegativeTestsForLogin_Lesson_4 {
     }
 
     @Test
-    public void notPossibleToLoginWithoutPass() throws InterruptedException {
+    public void notPossibleToLoginWithoutPass(){
 
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserEmail_hw6(customerLogin.getEmail());
@@ -104,7 +103,7 @@ public class NegativeTestsForLogin_Lesson_4 {
     }
 
     @Test
-    public void notPossibleToLoginWithInvalidPass() throws InterruptedException {
+    public void notPossibleToLoginWithInvalidPass(){
 
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserEmail_hw6(customerLogin.getEmail()).enterUserPassword_hw6(customerInvalidLogin.getInvalidPass()).
@@ -130,7 +129,7 @@ public class NegativeTestsForLogin_Lesson_4 {
 
     //
     @Test
-    public void notPossibleToLoginWithInvalidEmail() throws InterruptedException {
+    public void notPossibleToLoginWithInvalidEmail(){
 
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserEmail_hw6(customerLogin.getEmail()).enterUserPassword_hw6(customerInvalidLogin.getInvalidUserName()).

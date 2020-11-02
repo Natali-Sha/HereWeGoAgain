@@ -60,7 +60,7 @@ public class LoginToJuiceShopTests {
     }
 
     @Test
-    public void userIsAbleToLoginToShop() throws InterruptedException {
+    public void userIsAbleToLoginToShop(){
 
         loginPage.clickOnAccountButton();
 
@@ -113,7 +113,7 @@ public class LoginToJuiceShopTests {
     }
 
     @Test
-    public void userIsAbleToLoginToShopWithFluentInterface() throws InterruptedException {
+    public void userIsAbleToLoginToShopWithFluentInterface() {
 
         String actualUserName = fluentPage.clickOnAccountButton().
                 clickOnLoginButton().enterUserEmail(customer1.getEmail()).
@@ -131,7 +131,7 @@ public class LoginToJuiceShopTests {
     }
 
     @Test
-    public void userIsAbleToLoginToShopWithPageFactory() throws InterruptedException {
+    public void userIsAbleToLoginToShopWithPageFactory(){
 
         String actualUserName = loginPageFactory.clickOnAccountButton().
                 clickOnLoginButton().enterUserEmail(customer1.getEmail()).

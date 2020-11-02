@@ -60,7 +60,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void numberOfCharactersInField_Password_4char() throws InterruptedException {
+    public void numberOfCharactersInField_Password_4char(){
 
         WebElement passError = getDriver().findElement(By.xpath(".//*[@id='passwordControl']"));
         passError.sendKeys(password_4);
@@ -71,7 +71,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void numberOfCharactersInField_Password_21char() throws InterruptedException {
+    public void numberOfCharactersInField_Password_21char(){
 
         WebElement passError = getDriver().findElement(By.xpath(".//*[@id='passwordControl']"));
         passError.sendKeys(password_21);
@@ -82,7 +82,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void isNotValid_EmailAddress_int() throws InterruptedException {
+    public void isNotValid_EmailAddress_int(){
 
         WebElement mailInt = getDriver().findElement(By.xpath(".//*[@id='emailControl']"));
         mailInt.sendKeys(email);
@@ -93,7 +93,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void isNotValid_EmailAddress_string() throws InterruptedException {
+    public void isNotValid_EmailAddress_string(){
         WebElement mailString = getDriver().findElement(By.xpath(".//*[@id='emailControl']"));
         mailString.sendKeys(emailString);
 
@@ -104,7 +104,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void passwordsDoNotMatch_RepeatPassword() throws InterruptedException {
+    public void passwordsDoNotMatch_RepeatPassword(){
 
         getDriver().findElement(By.xpath(".//*[@id='passwordControl']")).sendKeys(pass);
 
@@ -121,7 +121,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void showPasswordAdvice_Toggle() throws InterruptedException {
+    public void showPasswordAdvice_Toggle(){
 
         getDriver().findElement(By.xpath(".//*[@class='mat-slide-toggle-thumb']")).click();
 
@@ -129,7 +129,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void securityQuestionsIsShown() throws InterruptedException {
+    public void securityQuestionsIsShown(){
 
         getDriver().findElement(By.xpath(".//*[@name='securityQuestion']")).click();
 
@@ -137,7 +137,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void warningSecurityQuestionsIsShown_securityAnswer() throws InterruptedException {
+    public void warningSecurityQuestionsIsShown_securityAnswer(){
         WebElement securityAnswer = getDriver().findElement(By.id("securityAnswerControl"));
         securityAnswer.click();
 
