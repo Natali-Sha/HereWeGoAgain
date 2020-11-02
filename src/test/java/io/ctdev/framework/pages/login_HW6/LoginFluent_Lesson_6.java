@@ -1,4 +1,4 @@
-package io.ctdev.framework.pages.login_HW;
+package io.ctdev.framework.pages.login_HW6;
 
 import io.ctdev.framework.pages.AbstractPage;
 import org.openqa.selenium.By;

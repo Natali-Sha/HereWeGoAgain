@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite" verbose="1" configfailurepolicy="continue" parallel="classes" thread-count="2">
+    <test name="Regression">
+        <packages>
+            <package name="io.ctdev.tests.login.*"/>
+            <package name="io.ctdev.tests.signup.*"/>
+        </packages>
+    </test>
+</suite>

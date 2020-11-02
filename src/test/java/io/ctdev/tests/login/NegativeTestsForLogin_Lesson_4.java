@@ -1,10 +1,11 @@
 package io.ctdev.tests.login;
+
 import io.ctdev.framework.model.Customer_hw6;
 import io.ctdev.framework.driver.WebDriverSingleton;
-import io.ctdev.framework.pages.login_HW.LoginFluent_Lesson_6;
+import io.ctdev.framework.pages.login_HW6.LoginFluent_Lesson_6;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -36,6 +37,8 @@ public class NegativeTestsForLogin_Lesson_4 {
         getDriver().get("http://3.18.213.48/#/");
 
         wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class*='close-dialog']")));
+//        getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
 
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
 
@@ -43,6 +46,7 @@ public class NegativeTestsForLogin_Lesson_4 {
         customerInvalidLogin = Customer_hw6.newBuilder().withInvalidUsername("natali6ukr.net").withInvalidPass("123456789").build();
         fluentPage_hw6 = new LoginFluent_Lesson_6(driver);
     }
+
     @AfterClass
     public void tearDown() {
         WebDriverSingleton.closeDriver();
@@ -57,11 +61,11 @@ public class NegativeTestsForLogin_Lesson_4 {
     }
 
     @Test
-    public void notPossibleToLoginWithoutEmail() throws InterruptedException {
+    public void notPossibleToLoginWithoutEmail(){
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserPassword_hw6(customerLogin.getEmail());
 
-       fluentPage_hw6.findLoginButtonAttribute();
+        fluentPage_hw6.findLoginButtonAttribute();
 
         Assert.assertEquals(fluentPage_hw6.findLoginButtonAttribute(), "true", "Login button is enabled w/o user email.");
 
@@ -78,10 +82,10 @@ public class NegativeTestsForLogin_Lesson_4 {
     }
 
     @Test
-    public void notPossibleToLoginWithoutPass() throws InterruptedException {
+    public void notPossibleToLoginWithoutPass(){
 
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
-        enterUserEmail_hw6(customerLogin.getEmail());
+                enterUserEmail_hw6(customerLogin.getEmail());
 
         fluentPage_hw6.findLoginButtonAttribute();
         Assert.assertEquals(fluentPage_hw6.findLoginButtonAttribute(), "true", "Login button is enabled w/o user email.");
@@ -99,15 +103,14 @@ public class NegativeTestsForLogin_Lesson_4 {
     }
 
     @Test
-    public void notPossibleToLoginWithInvalidPass() throws InterruptedException {
+    public void notPossibleToLoginWithInvalidPass(){
 
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserEmail_hw6(customerLogin.getEmail()).enterUserPassword_hw6(customerInvalidLogin.getInvalidPass()).
                 submitLoginForUser_hw6();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")));
 
-        Thread.sleep(3000);
-
-                Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")).size() > 0, "Warning massage 'Invalid email or password.' is not shown");
+        Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")).size() > 0, "Warning massage 'Invalid email or password.' is not shown");
 
 //        System.out.println("Typing user email - " + userName);
 //        getDriver().findElement(By.id("email")).sendKeys(userName);
@@ -123,15 +126,15 @@ public class NegativeTestsForLogin_Lesson_4 {
 //        Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")).size() > 0, "Warning massage 'Invalid email or password.' is not shown");
 
     }
-//
+
+    //
     @Test
-    public void notPossibleToLoginWithInvalidEmail() throws InterruptedException {
+    public void notPossibleToLoginWithInvalidEmail(){
 
         fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().
                 enterUserEmail_hw6(customerLogin.getEmail()).enterUserPassword_hw6(customerInvalidLogin.getInvalidUserName()).
                 submitLoginForUser_hw6();
-
-        Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")));
 
         Assert.assertTrue(getDriver().findElements(By.xpath(".//*[contains(@class, 'error ng-star-inserted')]")).size() > 0, "Warning massage 'Invalid email or password.' is not shown");
 
