@@ -7,7 +7,6 @@ import org.aeonbits.owner.Reloadable;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({"file:src/test/resources/testConf.properties"})
 //@Config.Sources({"classpath:testConf.properties"})
-
 public interface TestConfig extends Config, Reloadable {
 
     TestConfig cfg = ConfigFactory.create(TestConfig.class, System.getenv(), System.getProperties());

@@ -32,7 +32,7 @@ public class SingUpJuiceShopLesson4 {
         getDriver().navigate().refresh();
 
         fluentPageRegister_hw6 = new RegisterFluentLesson6(driver);
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(getDriver(), 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class*='close-dialog']")));
         fluentPageRegister_hw6.closeDialog();
 

@@ -34,7 +34,7 @@ public class NegativeTestsForLoginLesson4 {
 
         fluentPage_hw6 = new LoginFluentLesson6(driver);
 
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(getDriver(), 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class*='close-dialog']")));
         fluentPage_hw6.closeDialogLogin();
 
