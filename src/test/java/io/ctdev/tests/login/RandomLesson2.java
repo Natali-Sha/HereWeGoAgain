@@ -18,29 +18,23 @@ import java.util.Random;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class Random_Lesson_2 extends BaseTest {
+public class RandomLesson2 extends BaseTest {
     /**
      * Unit test for simple App.
      */
 
     WebDriver driver;
 
-    //WebDriver driver = new ChromeDriver();
-
     @Test
     public void shouldAnswerWithTrue2() {
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 5);
-
         driver.get("https://www.rozetka.com.ua");
-
 
         String expectedTitle = "Интернет-магазин ROZETKA™: официальный сайт самого популярного онлайн-гипермаркета в Украине";
         String actualTitle = driver.getTitle();
 
-
         wait.until(ExpectedConditions.titleContains("ROZETKA"));
-
         Assert.assertEquals(actualTitle, expectedTitle, "Tab tittle is not equal");
 
         driver.quit();

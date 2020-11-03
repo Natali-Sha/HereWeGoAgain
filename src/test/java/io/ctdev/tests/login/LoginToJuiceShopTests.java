@@ -20,7 +20,6 @@ import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class LoginToJuiceShopTests {
 
-//    private String userName = "dima@ukr.net";
 
     private Customer customer1;
     private Customer customer2;
@@ -30,15 +29,11 @@ public class LoginToJuiceShopTests {
     private LoginFluentPage fluentPage;
     private LoginPageFactory loginPageFactory;
 
-//    WebDriver driver = getDriver();
 
-//    WebDriverWait wait;
 
     @BeforeClass
     public void SetUp() {
-//        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//   getDriver().get("http://3.18.213.48/#/");
+
         getDriver().get(TestConfig.cfg.baseUrl());
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
         wait = new WebDriverWait(driver, 5);
@@ -49,9 +44,6 @@ public class LoginToJuiceShopTests {
         loginPageFactory = new LoginPageFactory(driver);
 
 
-
-//        private String userName = "natali6@ukr.net";
-//        private String pass = "09876543216";
     }
 
     @AfterClass
@@ -63,7 +55,6 @@ public class LoginToJuiceShopTests {
     public void userIsAbleToLoginToShop(){
 
         loginPage.clickOnAccountButton();
-
 
         loginPage.clickOnLoginButton();
 

@@ -1,7 +1,7 @@
 package io.ctdev.framework.model;
 
 
-public class Customer_hw6 {
+public class CustomerHw6 {
 
     private String email;
     private String password;
@@ -46,14 +46,6 @@ public class Customer_hw6 {
     }
 
 
-//    public String getUserName() {
-//        return userName;
-//    }
-//
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
-
     public String getPass() {
         return pass;
     }
@@ -75,10 +67,10 @@ public class Customer_hw6 {
         return new Builder();
     }
 
-    public Customer_hw6() {
+    public CustomerHw6() {
     }
 
-    private Customer_hw6(final Builder builder) {
+    private CustomerHw6(final Builder builder) {
         email = builder.email;
         password = builder.password;
         invalidUserName = builder.invalidUserName;
@@ -123,12 +115,6 @@ public class Customer_hw6 {
         }
 
 
-//
-//        public Builder withUserName(final String val) {
-//            userName = val;
-//            return this;
-//        }
-
         public Builder withPass(final String val) {
             pass = val;
             return this;
@@ -139,8 +125,8 @@ public class Customer_hw6 {
             return this;
         }
 
-        public Customer_hw6 build() {
-            return new Customer_hw6(this);
+        public CustomerHw6 build() {
+            return new CustomerHw6(this);
         }
     }
 

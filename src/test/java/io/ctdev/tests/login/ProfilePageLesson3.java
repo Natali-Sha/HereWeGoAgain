@@ -1,6 +1,6 @@
 package io.ctdev.tests.login;
 
-public class ProfilePage_Lesson_3 {
+public class ProfilePageLesson3 {
     private String nameCSS = "[name='name']";
     private String nameXpath = "//input[@name='name']";
 
