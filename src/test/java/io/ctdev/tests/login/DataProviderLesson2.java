@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
-public class DataProvider_Lesson_2 {
+public class DataProviderLesson2 {
 
 
     public String data_1() {
@@ -24,7 +24,7 @@ public class DataProvider_Lesson_2 {
     }
 
     public String data_4() {
-        return null;
+        return "null";
     }
 
     @DataProvider(name = "allData")

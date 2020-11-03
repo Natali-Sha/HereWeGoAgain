@@ -5,20 +5,23 @@ import org.aeonbits.owner.ConfigFactory;
 import org.aeonbits.owner.Reloadable;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
-@Config.Sources({"classpath:testing.properties" })
+@Config.Sources({"file:src/test/resources/base.testing.properties",
+        "file:src/test/resources/remote.testing.properties",
+        "file:src/test/resources/remoteUrl.testing.properties",
+        "file:src/test/resources/browser.testing.properties"})
 public interface TestConfig extends Config, Reloadable {
 
-    TestConfig cfg = ConfigFactory.create(TestConfig.class);
+    TestConfig cfg = ConfigFactory.create(TestConfig.class, System.getenv(), System.getProperties());
 
-    @DefaultValue("chrome")
+    @Key("browser")
     String browser();
 
-    @DefaultValue("http://3.18.213.48/")
+    @Key("baseUrl")
     String baseUrl();
 
-    @DefaultValue("false")
+    @Key("remote")
     boolean remote();
 
-    @DefaultValue("http://localhost:44444/wd/hub/")
+    @Key("remoteUrl")
     String remoteUrl();
 }

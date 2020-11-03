@@ -1,7 +1,6 @@
 package io.ctdev.framework.pages.login_HW6;
 
 import io.ctdev.framework.pages.AbstractPage;
-import io.ctdev.tests.login.CheckProductJuiceShop_Lesson_5;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,19 +8,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Random;
-
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class CheckProductFluent_Lesson_6 extends AbstractPage {
+public class CheckProductFluentLesson6 extends AbstractPage {
 
 
     private WebDriverWait wait;
 
-    private By navBarAccountElement_hw6 = By.id("navbarAccount");
-    private By loginButton_hw6 = By.id("loginButton");
-    private By passwordInput_hw6 = By.id("password");
-    private By emailInput_hw6 = By.id("email");
+    private By navBarAccountElementHw6 = By.id("navbarAccount");
+    private By loginButtonHw6 = By.id("loginButton");
+    private By passwordInputHw6 = By.id("password");
+    private By emailInputHw6 = By.id("email");
     private By clickOnLoginButtonAfterAcc = By.id("navbarLoginButton");
     private By bananaProduct = By.xpath(".//*[@class='item-name'][contains(., 'Banana')]");
     private By checkBananaProduct = By.xpath(".//*[h1 and contains(., 'Banana Juice (1000ml)')]");
@@ -30,14 +27,13 @@ public class CheckProductFluent_Lesson_6 extends AbstractPage {
     private By openBasket = By.xpath(".//*[@class='mat-focus-indicator buttons mat-button mat-button-base ng-star-inserted']");
     private By search = By.xpath(".//mat-table/mat-row/mat-cell[contains(., 'Banana')]");
     private By secondPage = By.xpath(".//*[@aria-label='Next page']");
-    //    private By searchAProduct = By.xpath(".//mat-card[contains(., 'OWASP Juice Shop Coaster')]/div/button");
     private By owaspProd = By.xpath("//mat-card[contains(., 'OWASP Juice Shop Coaster')]/div/button");
     private By buskedButtonOwasp = By.xpath(".//snack-bar-container/simple-snack-bar/span");
+    private By mainLogoButton = By.xpath(".//*[@class='mat-focus-indicator buttons mat-button mat-button-base']");
+    private By closeDialogSelector = By.cssSelector("[class*='close-dialog']");
 
-
-    public CheckProductFluent_Lesson_6(WebDriver driver) {
+    public CheckProductFluentLesson6(WebDriver driver) {
         super(driver);
-
         this.wait = new WebDriverWait(driver, TIME_OUT);
     }
 
@@ -46,43 +42,39 @@ public class CheckProductFluent_Lesson_6 extends AbstractPage {
         driver.get("http://3.18.213.48/#/");
     }
 
-
-    public CheckProductFluent_Lesson_6 clickOnAccountButton() {
+    public CheckProductFluentLesson6 clickOnAccountButton() {
         System.out.println("Clicking on Account button");
-        WebElement element = getDriver().findElement(navBarAccountElement_hw6);
+        WebElement element = getDriver().findElement(navBarAccountElementHw6);
         element.click();
         return this;
     }
 
-    public CheckProductFluent_Lesson_6 clickOnLoginButtonAfterAcc() {
+    public CheckProductFluentLesson6 clickOnLoginButtonAfterAcc() {
         System.out.println("Clicking on Login button");
         getDriver().findElement(clickOnLoginButtonAfterAcc).click();
         return this;
     }
 
 
-    public CheckProductFluent_Lesson_6 enterUserPassword_hw6(String pass) {
+    public CheckProductFluentLesson6 enterUserPassword_hw6(String pass) {
         System.out.println("Typing user password - " + pass);
-        getDriver().findElement(passwordInput_hw6).sendKeys(pass);
+        getDriver().findElement(passwordInputHw6).sendKeys(pass);
         return this;
     }
 
-
-    public CheckProductFluent_Lesson_6 enterUserEmail_hw6(String email) {
+    public CheckProductFluentLesson6 enterUserEmail_hw6(String email) {
         System.out.println("Typing user email - " + email);
-        getDriver().findElement(emailInput_hw6).sendKeys(email);
+        getDriver().findElement(emailInputHw6).sendKeys(email);
         return this;
     }
 
-
-    public CheckProductFluent_Lesson_6 clickOnLoginButton() {
+    public CheckProductFluentLesson6 clickOnLoginButton() {
         System.out.println("Clicking on Login button");
-        getDriver().findElement(loginButton_hw6).click();
+        getDriver().findElement(loginButtonHw6).click();
         return this;
     }
 
-
-    public CheckProductFluent_Lesson_6 bananaProduct() {
+    public CheckProductFluentLesson6 bananaProduct() {
         getDriver().findElement(bananaProduct).click();
         return this;
     }
@@ -92,7 +84,7 @@ public class CheckProductFluent_Lesson_6 extends AbstractPage {
         return banana;
     }
 
-    public CheckProductFluent_Lesson_6 findBananaForUse() {
+    public CheckProductFluentLesson6 findBananaForUse() {
         getDriver().findElement(findBananaForUse).click();
         return this;
     }
@@ -105,29 +97,30 @@ public class CheckProductFluent_Lesson_6 extends AbstractPage {
         return bananaBasketStr;
     }
 
-    public CheckProductFluent_Lesson_6 openABasket() {
+    public CheckProductFluentLesson6 openABasket() {
         WebElement bananaBasketPopup = getDriver().findElement(bananaBasketPopupElement);
         wait.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
-        getDriver().findElement(openBasket);
-        wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(search)));
+        getDriver().findElement(openBasket).click();
+        System.out.println("12");
         return this;
-
     }
 
     public int bananaInTheBasked() {
+        wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(search)));
+        System.out.println("13");
 
         int bananaInBasket = getDriver().findElements(search).size();
         return bananaInBasket;
     }
 
-    public CheckProductFluent_Lesson_6 nextPage() {
+    public CheckProductFluentLesson6 nextPage() {
         WebElement nextPage = wait.until(ExpectedConditions.elementToBeClickable(secondPage));
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", nextPage);
         nextPage.click();
         return this;
     }
 
-    public CheckProductFluent_Lesson_6 owaspProduct() {
+    public CheckProductFluentLesson6 owaspProduct() {
         WebElement owasp = getDriver().findElement(owaspProd);
         wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(owaspProd)));
         owasp.click();
@@ -141,5 +134,14 @@ public class CheckProductFluent_Lesson_6 extends AbstractPage {
         return outOfStockPopupStr;
     }
 
+    public CheckProductFluentLesson6 clickOnMainLogoButton() {
+        getDriver().findElement(mainLogoButton).click();
+        return this;
+    }
+
+    public CheckProductFluentLesson6 closeDialogProduct() {
+        getDriver().findElement(closeDialogSelector).click();
+        return this;
+    }
 }
 

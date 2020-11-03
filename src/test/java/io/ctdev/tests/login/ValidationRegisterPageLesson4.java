@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class ValidationRegisterPage_Lesson_4 {
+public class ValidationRegisterPageLesson4 {
 
     private String pass = "12345678";
     private String repeatPass = "87654321";
@@ -21,12 +21,8 @@ public class ValidationRegisterPage_Lesson_4 {
     private WebDriverWait wait;
 
 
-
     @BeforeClass
     public void beforeTests() {
-        //getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-//        WebDriverWait wait = new WebDriverWait(getDriver(), 5);
 
         getDriver().get("http://3.18.213.48/#/");
 
@@ -60,7 +56,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void numberOfCharactersInField_Password_4char(){
+    public void numberOfCharactersInField_Password_4char() {
 
         WebElement passError = getDriver().findElement(By.xpath(".//*[@id='passwordControl']"));
         passError.sendKeys(password_4);
@@ -71,7 +67,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void numberOfCharactersInField_Password_21char(){
+    public void numberOfCharactersInField_Password_21char() {
 
         WebElement passError = getDriver().findElement(By.xpath(".//*[@id='passwordControl']"));
         passError.sendKeys(password_21);
@@ -82,7 +78,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void isNotValid_EmailAddress_int(){
+    public void isNotValid_EmailAddress_int() {
 
         WebElement mailInt = getDriver().findElement(By.xpath(".//*[@id='emailControl']"));
         mailInt.sendKeys(email);
@@ -93,7 +89,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void isNotValid_EmailAddress_string(){
+    public void isNotValid_EmailAddress_string() {
         WebElement mailString = getDriver().findElement(By.xpath(".//*[@id='emailControl']"));
         mailString.sendKeys(emailString);
 
@@ -104,7 +100,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void passwordsDoNotMatch_RepeatPassword(){
+    public void passwordsDoNotMatch_RepeatPassword() {
 
         getDriver().findElement(By.xpath(".//*[@id='passwordControl']")).sendKeys(pass);
 
@@ -112,7 +108,7 @@ public class ValidationRegisterPage_Lesson_4 {
         repeatPassError.sendKeys(repeatPass);
         getDriver().findElement(By.id("emailControl")).click();
 
-        wait.until(ExpectedConditions.attributeContains(By.xpath(".//*[@id='repeatPasswordControl']"),"aria-invalid","true"));
+        wait.until(ExpectedConditions.attributeContains(By.xpath(".//*[@id='repeatPasswordControl']"), "aria-invalid", "true"));
 
 
         String isInvalid = repeatPassError.getAttribute("aria-invalid");
@@ -121,7 +117,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void showPasswordAdvice_Toggle(){
+    public void showPasswordAdvice_Toggle() {
 
         getDriver().findElement(By.xpath(".//*[@class='mat-slide-toggle-thumb']")).click();
 
@@ -129,7 +125,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void securityQuestionsIsShown(){
+    public void securityQuestionsIsShown() {
 
         getDriver().findElement(By.xpath(".//*[@name='securityQuestion']")).click();
 
@@ -137,7 +133,7 @@ public class ValidationRegisterPage_Lesson_4 {
     }
 
     @Test
-    public void warningSecurityQuestionsIsShown_securityAnswer(){
+    public void warningSecurityQuestionsIsShown_securityAnswer() {
         WebElement securityAnswer = getDriver().findElement(By.id("securityAnswerControl"));
         securityAnswer.click();
 
