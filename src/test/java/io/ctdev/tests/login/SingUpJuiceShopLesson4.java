@@ -18,7 +18,6 @@ import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
 public class SingUpJuiceShopLesson4 {
 
-
     private CustomerHw6 singUp;
     private WebDriver driver = getDriver();
     private WebDriverWait wait;
@@ -35,7 +34,6 @@ public class SingUpJuiceShopLesson4 {
         wait = new WebDriverWait(getDriver(), 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class*='close-dialog']")));
         fluentPageRegister_hw6.closeDialog();
-
         singUp = CustomerHw6.newBuilder().withPass("09876543217").withAnswer("00.00.0000").build();
 
     }

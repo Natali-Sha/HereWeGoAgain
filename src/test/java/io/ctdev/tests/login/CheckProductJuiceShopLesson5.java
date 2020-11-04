@@ -25,7 +25,7 @@ public class CheckProductJuiceShopLesson5 {
     private CustomerHw6 testData;
     private WebDriver driver = getDriver();
     private WebDriverWait wait = new WebDriverWait(getDriver(), 5);
-    private CheckProductFluentLesson6 product= new CheckProductFluentLesson6(driver,wait);
+    private CheckProductFluentLesson6 product = new CheckProductFluentLesson6(driver, wait);
 
 
     @BeforeClass
@@ -36,27 +36,15 @@ public class CheckProductJuiceShopLesson5 {
         System.out.println(TestConfig.cfg.baseUrl());
         getDriver().get(TestConfig.cfg.baseUrl());
         getDriver().navigate().refresh();
-//        WebElement wantMeIn = getDriver().findElement(By.xpath(".//*[@aria-label='dismiss cookie message']"));
-//        wait.until(ExpectedConditions.visibilityOf(wantMeIn));
-//        wantMeIn.click();
+
         wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(By.xpath(".//*[@aria-label='dismiss cookie message']")))).click();
-
-
-
-//        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class*='close-dialog']")));
-//        product = new CheckProductFluentLesson6(driver);
         product.closeDialogProduct();
-
         testData = CustomerHw6.newBuilder().withName("vik123@ukr.net").withPassword("12345678").withAnswer("00.00.0000").build();
-
-
 
         product.clickOnAccountButton().clickOnLoginButtonAfterAcc().
                 enterUserEmail_hw6(testData.getEmail()).enterUserPassword_hw6(testData.getPassword()).
                 clickOnLoginButton();
-
     }
-
 
     @AfterClass
     public void closeWebDriver() {
@@ -104,7 +92,6 @@ public class CheckProductJuiceShopLesson5 {
     public void addingProductToBasket() {
 
         int bananaInBasket = product.findBananaForUse().openABasket().bananaInTheBasked();
-
         Assert.assertTrue(bananaInBasket > 0, "Not edit to basket");
 
     }

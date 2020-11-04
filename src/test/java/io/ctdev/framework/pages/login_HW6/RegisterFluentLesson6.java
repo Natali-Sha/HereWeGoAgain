@@ -55,7 +55,6 @@ private String uniqueLoginNameSt;
         System.out.println("Clicking on Account button");
         WebElement element = getDriver().findElement(navBarAccountElementhw6Register);
         element.click();
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(loginSubmitButton_hw6));
 
         return this;
     }
