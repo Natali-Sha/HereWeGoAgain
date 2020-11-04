@@ -33,11 +33,12 @@ public class LoginFluentLesson6 extends AbstractPage {
 
     @Override
     public void openPage() {
-        driver.get("http://3.18.213.48/#/");
+        getDriver().get("http://3.18.213.48/#/");
     }
 
     public String getCurrentLoggedUserName_hw6() {
         getDriver().findElement(navBarAccountElementHw6).click();
+        WebDriverWait wait = new WebDriverWait(getDriver(), TIME_OUT);
         WebElement userNameElement = wait.until(ExpectedConditions.presenceOfElementLocated(goToUserProfileHw6));
         return userNameElement.getAttribute("innerText").trim();
     }

@@ -13,7 +13,7 @@ import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 public class CheckProductFluentLesson6 extends AbstractPage {
 
 
-    private WebDriverWait wait;
+    private WebDriverWait waitProductFluent;
 
     private By navBarAccountElementHw6 = By.id("navbarAccount");
     private By loginButtonHw6 = By.id("loginButton");
@@ -32,14 +32,14 @@ public class CheckProductFluentLesson6 extends AbstractPage {
     private By mainLogoButton = By.xpath(".//*[@class='mat-focus-indicator buttons mat-button mat-button-base']");
     private By closeDialogSelector = By.cssSelector("[class*='close-dialog']");
 
-    public CheckProductFluentLesson6(WebDriver driver) {
+    public CheckProductFluentLesson6(WebDriver driver, WebDriverWait waitProductFluent) {
         super(driver);
-        this.wait = new WebDriverWait(driver, TIME_OUT);
+        this.waitProductFluent = waitProductFluent;
     }
 
     @Override
     public void openPage() {
-        driver.get("http://3.18.213.48/#/");
+        getDriver().get("http://3.18.213.48/#/");
     }
 
     public CheckProductFluentLesson6 clickOnAccountButton() {
@@ -74,12 +74,13 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         return this;
     }
 
-    public CheckProductFluentLesson6 bananaProduct() {
+    public CheckProductFluentLesson6 addBananaProduct() {
         getDriver().findElement(bananaProduct).click();
         return this;
     }
 
     public WebElement checkBananaProduct() {
+
         WebElement banana = getDriver().findElement(checkBananaProduct);
         return banana;
     }
@@ -92,21 +93,21 @@ public class CheckProductFluentLesson6 extends AbstractPage {
     public String bananaBasketPopup() {
         WebElement bananaBasketPopup = getDriver().findElement(bananaBasketPopupElement);
 
-        wait.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
+        waitProductFluent.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
         String bananaBasketStr = bananaBasketPopup.getText();
         return bananaBasketStr;
     }
 
     public CheckProductFluentLesson6 openABasket() {
         WebElement bananaBasketPopup = getDriver().findElement(bananaBasketPopupElement);
-        wait.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
+        waitProductFluent.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
         getDriver().findElement(openBasket).click();
         System.out.println("12");
         return this;
     }
 
     public int bananaInTheBasked() {
-        wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(search)));
+        waitProductFluent.until(ExpectedConditions.visibilityOf(getDriver().findElement(search)));
         System.out.println("13");
 
         int bananaInBasket = getDriver().findElements(search).size();
@@ -114,7 +115,9 @@ public class CheckProductFluentLesson6 extends AbstractPage {
     }
 
     public CheckProductFluentLesson6 nextPage() {
-        WebElement nextPage = wait.until(ExpectedConditions.elementToBeClickable(secondPage));
+        WebDriverWait wait = new WebDriverWait(getDriver(), 5);
+        wait.until(ExpectedConditions.elementToBeClickable(secondPage));
+        WebElement nextPage = getDriver().findElement(secondPage);
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", nextPage);
         nextPage.click();
         return this;
@@ -122,14 +125,14 @@ public class CheckProductFluentLesson6 extends AbstractPage {
 
     public CheckProductFluentLesson6 owaspProduct() {
         WebElement owasp = getDriver().findElement(owaspProd);
-        wait.until(ExpectedConditions.visibilityOf(getDriver().findElement(owaspProd)));
+        waitProductFluent.until(ExpectedConditions.visibilityOf(getDriver().findElement(owaspProd)));
         owasp.click();
         return this;
     }
 
     public String owaspProductInBasket() {
         WebElement outOfStockPopup = getDriver().findElement(buskedButtonOwasp);
-        wait.until(ExpectedConditions.visibilityOf(outOfStockPopup));
+        waitProductFluent.until(ExpectedConditions.visibilityOf(outOfStockPopup));
         String outOfStockPopupStr = outOfStockPopup.getText();
         return outOfStockPopupStr;
     }

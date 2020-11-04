@@ -15,7 +15,7 @@ public class ValidationRegisterPageLesson4 {
     private String pass = "12345678";
     private String repeatPass = "87654321";
     private String password_4 = "1234";
-    private String password_21 = "123456789012345678901";
+    private String password_21 = "123456789012345678901234";
     private String email = "1234";
     private String emailString = "nataliukr.net";
     private WebDriverWait wait;
@@ -67,13 +67,14 @@ public class ValidationRegisterPageLesson4 {
     }
 
     @Test
-    public void numberOfCharactersInField_Password_21char() {
+    public void numberOfCharactersInField_Password_21char() throws InterruptedException {
 
         WebElement passError = getDriver().findElement(By.xpath(".//*[@id='passwordControl']"));
         passError.sendKeys(password_21);
-        getDriver().findElement(By.id("repeatPasswordControl")).click();
-        String isInvalid = passError.getAttribute("aria-invalid");
+        getDriver().findElement(By.id("emailControl")).click();
+        Thread.sleep(1000);
 
+        String isInvalid = passError.getAttribute("aria-invalid");
         Assert.assertEquals(isInvalid, "true", "Warning 'Password must be 5-20 characters long' is shown");
     }
 

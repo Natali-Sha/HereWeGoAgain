@@ -42,7 +42,7 @@ private String uniqueLoginNameSt;
     public RegisterFluentLesson6(WebDriver driver) {
         super(driver);
 
-        this.wait = new WebDriverWait(driver, TIME_OUT);
+        this.wait = new WebDriverWait(getDriver(), TIME_OUT);
     }
 
     @Override
@@ -55,7 +55,6 @@ private String uniqueLoginNameSt;
         System.out.println("Clicking on Account button");
         WebElement element = getDriver().findElement(navBarAccountElementhw6Register);
         element.click();
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(loginSubmitButton_hw6));
 
         return this;
     }
@@ -93,6 +92,7 @@ private String uniqueLoginNameSt;
 
     public RegisterFluentLesson6 inputUserPass(String pass) {
         System.out.println("Typing user password - " + pass);
+
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("passwordControl")));
         getDriver().findElement(userPassHw6).sendKeys(pass);
         return this;
