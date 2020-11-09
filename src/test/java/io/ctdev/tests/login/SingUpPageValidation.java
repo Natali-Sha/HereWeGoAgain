@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class ValidationRegisterPageLesson4 {
+public class SingUpPageValidation {
 
     private String pass = "12345678";
     private String repeatPass = "87654321";

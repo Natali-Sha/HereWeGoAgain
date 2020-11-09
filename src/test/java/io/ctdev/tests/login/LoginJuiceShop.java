@@ -4,7 +4,7 @@ import io.ctdev.framework.config.TestConfig;
 import io.ctdev.framework.driver.WebDriverSingleton;
 import io.ctdev.framework.model.CustomerHw6;
 
-import io.ctdev.framework.pages.login_HW6.LoginFluentLesson6;
+import io.ctdev.framework.pages.loginPageObject.LoginPageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,13 +15,13 @@ import org.testng.annotations.Test;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class TestLoginLesson4 {
+public class LoginJuiceShop {
 
 
     private CustomerHw6 customerLogin;
     private WebDriver driver = getDriver();
     private WebDriverWait wait;
-    private LoginFluentLesson6 fluentPage_hw6;
+    private LoginPageObject loginPageObject;
 
 
     @BeforeClass
@@ -32,7 +32,7 @@ public class TestLoginLesson4 {
         wait = new WebDriverWait(driver, 5);
         getDriver().findElement(By.cssSelector("[class*='close-dialog']")).click();
         customerLogin = CustomerHw6.newBuilder().withName("natali6@ukr.net").withPassword("09876543216").build();
-        fluentPage_hw6 = new LoginFluentLesson6(driver);
+        loginPageObject = new LoginPageObject(driver);
 
     }
 
@@ -44,9 +44,9 @@ public class TestLoginLesson4 {
     @Test
     public void userIsAbleToLogin() {
 
-        String loggedInUser = fluentPage_hw6.clickOnAccountButton_hw6().clickOnLoginButton_hw6().enterUserEmail_hw6(customerLogin.getEmail()).
-                enterUserPassword_hw6(customerLogin.getPassword()).
-                submitLoginForUser_hw6().getCurrentLoggedUserName_hw6();
+        String loggedInUser = loginPageObject.clickOnAccountButtonOnMainPage().clickOnLoginButtonOnMainPage().enterUserEmailPasswordOnLoginPage(customerLogin.getEmail()).
+                enterUserPasswordOnLoginPage(customerLogin.getPassword()).
+                submitLoginForUser().getCurrentLoggedUserName();
 
         Assert.assertEquals(loggedInUser, customerLogin.getEmail(), "User name does not mach");
 

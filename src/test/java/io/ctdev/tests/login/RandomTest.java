@@ -18,7 +18,7 @@ import java.util.Random;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class RandomLesson2 extends BaseTest {
+public class RandomTest extends BaseTest {
     /**
      * Unit test for simple App.
      */
@@ -43,7 +43,7 @@ public class RandomLesson2 extends BaseTest {
     @Test
     public void randomRange() {
 
-        Random rand = new Random();
+        java.util.Random rand = new java.util.Random();
         int randInt = rand.nextInt(10);
         System.out.println(randInt + " - value");
         Assert.assertTrue(1 <= randInt && randInt <= 10, "Integer in correct range");

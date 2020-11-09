@@ -2,8 +2,8 @@
 <suite name="Regression Suite" >
     <test name="Regression">
         <classes>
-            <class name="io.ctdev.tests.login.NegativeTestsForLoginLesson4"/>
-            <class name="io.ctdev.tests.login.CheckProductJuiceShopLesson5"/>
+            <class name="io.ctdev.tests.login.NegativeTestsForLoginJuiceShop"/>
+            <class name="io.ctdev.tests.login.CheckProductJuiceShop"/>
         </classes>
     </test>
 </suite>
