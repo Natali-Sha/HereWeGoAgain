@@ -3,7 +3,7 @@ package io.ctdev.tests.login;
 import io.ctdev.framework.config.TestConfig;
 import io.ctdev.framework.driver.WebDriverSingleton;
 import io.ctdev.framework.model.CustomerHw6;
-import io.ctdev.framework.pages.login_HW6.RegisterFluentLesson6;
+import io.ctdev.framework.pages.singUpPageObject.SingUpPageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,13 +16,13 @@ import org.testng.annotations.Test;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class SingUpJuiceShopLesson4 {
+public class SingUpJuiceShop {
 
     private CustomerHw6 singUp;
     private WebDriver driver = getDriver();
     private WebDriverWait wait;
-    private RegisterFluentLesson6 fluentPageRegister_hw6;
-    private RegisterFluentLesson6 uniqueLoginName;
+    private SingUpPageObject fluentPageRegister_hw6;
+    private SingUpPageObject uniqueLoginName;
 
     @BeforeClass
     public void beforeSingUp() {
@@ -30,7 +30,7 @@ public class SingUpJuiceShopLesson4 {
         getDriver().get(TestConfig.cfg.baseUrl());
         getDriver().navigate().refresh();
 
-        fluentPageRegister_hw6 = new RegisterFluentLesson6(driver);
+        fluentPageRegister_hw6 = new SingUpPageObject(driver);
         wait = new WebDriverWait(getDriver(), 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class*='close-dialog']")));
         fluentPageRegister_hw6.closeDialog();

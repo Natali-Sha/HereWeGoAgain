@@ -1,4 +1,4 @@
-package io.ctdev.framework.pages.login_HW6;
+package io.ctdev.framework.pages.singUpPageObject;
 
 import io.ctdev.framework.pages.AbstractPage;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ import java.util.Random;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class RegisterFluentLesson6 extends AbstractPage {
+public class SingUpPageObject extends AbstractPage {
 
 
     private WebDriverWait wait;
@@ -39,7 +39,7 @@ public class RegisterFluentLesson6 extends AbstractPage {
 
 private String uniqueLoginNameSt;
 
-    public RegisterFluentLesson6(WebDriver driver) {
+    public SingUpPageObject(WebDriver driver) {
         super(driver);
 
         this.wait = new WebDriverWait(getDriver(), TIME_OUT);
@@ -51,7 +51,7 @@ private String uniqueLoginNameSt;
     }
 
 
-    public RegisterFluentLesson6 clickOnAccountButton_hw6() {
+    public SingUpPageObject clickOnAccountButton_hw6() {
         System.out.println("Clicking on Account button");
         WebElement element = getDriver().findElement(navBarAccountElementhw6Register);
         element.click();
@@ -59,7 +59,7 @@ private String uniqueLoginNameSt;
         return this;
     }
 
-    public RegisterFluentLesson6 clickOnLoginButton_hw6() {
+    public SingUpPageObject clickOnLoginButton_hw6() {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(loginSubmitButton_hw6);
         System.out.println("Clicking on Login button");
         getDriver().findElement(loginSubmitButtonHw6).click();
@@ -67,14 +67,14 @@ private String uniqueLoginNameSt;
     }
 
 
-    public RegisterFluentLesson6 notYetCustomer_hw6() {
+    public SingUpPageObject notYetCustomer_hw6() {
         System.out.println("Clicking on 'Not yet customer?' link");
         getDriver().findElement(notYetCustomerHw6).click();
         return this;
     }
 
 
-    public RegisterFluentLesson6 uniqueLoginName() {
+    public SingUpPageObject uniqueLoginName() {
         Random rand = new Random(System.currentTimeMillis());
         int uniqueLoginName = rand.nextInt(999999);
         uniqueLoginNameSt = "nat" + uniqueLoginName + "@ukr.net";
@@ -83,14 +83,14 @@ private String uniqueLoginNameSt;
         return this;
     }
 
-    public RegisterFluentLesson6 switchToggle_hw6() {
+    public SingUpPageObject switchToggle_hw6() {
         System.out.println("Switch on 'Show password advice' toggle  - ON");
         getDriver().findElement(switchToggleHw6).click();
         return this;
     }
 
 
-    public RegisterFluentLesson6 inputUserPass(String pass) {
+    public SingUpPageObject inputUserPass(String pass) {
         System.out.println("Typing user password - " + pass);
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("passwordControl")));
@@ -99,32 +99,32 @@ private String uniqueLoginNameSt;
     }
 
 
-    public RegisterFluentLesson6 repeatUserPass(String pass) {
+    public SingUpPageObject repeatUserPass(String pass) {
         System.out.println("Repeat user password - " + pass);
         getDriver().findElement(repeatUserPassHw6).sendKeys(pass);
         return this;
     }
 
-    public RegisterFluentLesson6 securityQuestion() {
+    public SingUpPageObject securityQuestion() {
         System.out.println("Clicking on Security Question");
         getDriver().findElement(securityQuestion).click();
         return this;
     }
 
-    public RegisterFluentLesson6 selectSecurityQuestion() {
+    public SingUpPageObject selectSecurityQuestion() {
         System.out.println("Selecting Security Question ");
         getDriver().findElement(selectSecurityQuestion).click();
         return this;
     }
 
-    public RegisterFluentLesson6 securityAnswer(String answer) {
+    public SingUpPageObject securityAnswer(String answer) {
         System.out.println("Typing answer - " + answer);
         getDriver().findElement(securityAnswer).sendKeys(answer);
         return this;
     }
 
 
-    public RegisterFluentLesson6 registerButton () {
+    public SingUpPageObject registerButton () {
         System.out.println("Clicking on Register button");
         WebElement registerButton = getDriver().findElement(registerButtonL);
         registerButton.click();
@@ -136,7 +136,7 @@ private String uniqueLoginNameSt;
         return uniqueLoginNameSt;
     }
 
-    public RegisterFluentLesson6 closeDialog() {
+    public SingUpPageObject closeDialog() {
         getDriver().findElement(closeDialogSelector).click();
         return this;
     }

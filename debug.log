@@ -29,3 +29,6 @@
 [1103/100509.193:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
 [1103/205703.831:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
 [1103/235003.857:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1111/015318.443:ERROR:process_info.cc(329)] VirtualQueryEx: Отказано в доступе. (0x5)
+[1111/015318.448:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[1111/015318.449:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Попытка доступа к процессу, выполняющему процедуру завершения. (0xc000010a)

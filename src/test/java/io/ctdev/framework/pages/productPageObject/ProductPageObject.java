@@ -1,4 +1,4 @@
-package io.ctdev.framework.pages.login_HW6;
+package io.ctdev.framework.pages.productPageObject;
 
 import io.ctdev.framework.pages.AbstractPage;
 import org.openqa.selenium.By;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
-public class CheckProductFluentLesson6 extends AbstractPage {
+public class ProductPageObject extends AbstractPage {
 
 
     private WebDriverWait waitProductFluent;
@@ -31,8 +31,15 @@ public class CheckProductFluentLesson6 extends AbstractPage {
     private By buskedButtonOwasp = By.xpath(".//snack-bar-container/simple-snack-bar/span");
     private By mainLogoButton = By.xpath(".//*[@class='mat-focus-indicator buttons mat-button mat-button-base']");
     private By closeDialogSelector = By.cssSelector("[class*='close-dialog']");
+    private By addProduct = By.xpath(".//mat-card[contains(., 'Banana')]/div/button");
+    private By nameBanana = By.xpath(".//h1");
+    private By descriptionBanana = By.xpath(".//div");
+    private By priceBanana = By.xpath(".//div/p");
 
-    public CheckProductFluentLesson6(WebDriver driver, WebDriverWait waitProductFluent) {
+    ;
+
+
+    public ProductPageObject(WebDriver driver, WebDriverWait waitProductFluent) {
         super(driver);
         this.waitProductFluent = waitProductFluent;
     }
@@ -42,39 +49,39 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         getDriver().get("http://3.18.213.48/#/");
     }
 
-    public CheckProductFluentLesson6 clickOnAccountButton() {
+    public ProductPageObject clickOnAccountButton() {
         System.out.println("Clicking on Account button");
         WebElement element = getDriver().findElement(navBarAccountElementHw6);
         element.click();
         return this;
     }
 
-    public CheckProductFluentLesson6 clickOnLoginButtonAfterAcc() {
+    public ProductPageObject clickOnLoginButtonAfterAcc() {
         System.out.println("Clicking on Login button");
         getDriver().findElement(clickOnLoginButtonAfterAcc).click();
         return this;
     }
 
 
-    public CheckProductFluentLesson6 enterUserPassword_hw6(String pass) {
+    public ProductPageObject enterUserPassword_hw6(String pass) {
         System.out.println("Typing user password - " + pass);
         getDriver().findElement(passwordInputHw6).sendKeys(pass);
         return this;
     }
 
-    public CheckProductFluentLesson6 enterUserEmail_hw6(String email) {
+    public ProductPageObject enterUserEmail_hw6(String email) {
         System.out.println("Typing user email - " + email);
         getDriver().findElement(emailInputHw6).sendKeys(email);
         return this;
     }
 
-    public CheckProductFluentLesson6 clickOnLoginButton() {
+    public ProductPageObject clickOnLoginButton() {
         System.out.println("Clicking on Login button");
         getDriver().findElement(loginButtonHw6).click();
         return this;
     }
 
-    public CheckProductFluentLesson6 addBananaProduct() {
+    public ProductPageObject addBananaProduct() {
         getDriver().findElement(bananaProduct).click();
         return this;
     }
@@ -85,7 +92,7 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         return banana;
     }
 
-    public CheckProductFluentLesson6 findBananaForUse() {
+    public ProductPageObject findBananaForUse() {
         getDriver().findElement(findBananaForUse).click();
         return this;
     }
@@ -98,11 +105,10 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         return bananaBasketStr;
     }
 
-    public CheckProductFluentLesson6 openABasket() {
+    public ProductPageObject openABasket() {
         WebElement bananaBasketPopup = getDriver().findElement(bananaBasketPopupElement);
         waitProductFluent.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
         getDriver().findElement(openBasket).click();
-        System.out.println("12");
         return this;
     }
 
@@ -114,7 +120,7 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         return bananaInBasket;
     }
 
-    public CheckProductFluentLesson6 nextPage() {
+    public ProductPageObject nextPage() {
         WebDriverWait wait = new WebDriverWait(getDriver(), 5);
         wait.until(ExpectedConditions.elementToBeClickable(secondPage));
         WebElement nextPage = getDriver().findElement(secondPage);
@@ -123,7 +129,7 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         return this;
     }
 
-    public CheckProductFluentLesson6 owaspProduct() {
+    public ProductPageObject owaspProduct() {
         WebElement owasp = getDriver().findElement(owaspProd);
         waitProductFluent.until(ExpectedConditions.visibilityOf(getDriver().findElement(owaspProd)));
         owasp.click();
@@ -137,13 +143,33 @@ public class CheckProductFluentLesson6 extends AbstractPage {
         return outOfStockPopupStr;
     }
 
-    public CheckProductFluentLesson6 clickOnMainLogoButton() {
+    public ProductPageObject clickOnMainLogoButton() {
         getDriver().findElement(mainLogoButton).click();
         return this;
     }
 
-    public CheckProductFluentLesson6 closeDialogProduct() {
+    public ProductPageObject closeDialogProduct() {
         getDriver().findElement(closeDialogSelector).click();
+        return this;
+    }
+
+    public String nameOfProductGetText() {
+        String name = getDriver().findElement(nameBanana).getText();
+        return name;
+    }
+
+    public String descriptionOfProductGetText() {
+        String description = getDriver().findElement(descriptionBanana).getText();
+        return description;
+    }
+
+    public String priceOfProductGetText() {
+        String price = getDriver().findElement(priceBanana).getText();
+        return price;
+    }
+
+    public ProductPageObject bananaBasket() {
+        getDriver().findElement(addProduct).click();
         return this;
     }
 }
