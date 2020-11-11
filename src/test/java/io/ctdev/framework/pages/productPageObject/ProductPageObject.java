@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import static io.ctdev.framework.driver.WebDriverSingleton.getDriver;
 
@@ -110,7 +109,6 @@ public class ProductPageObject extends AbstractPage {
         WebElement bananaBasketPopup = getDriver().findElement(bananaBasketPopupElement);
         waitProductFluent.until(ExpectedConditions.visibilityOf(bananaBasketPopup));
         getDriver().findElement(openBasket).click();
-        System.out.println("12");
         return this;
     }
 
